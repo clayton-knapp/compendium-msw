@@ -10,8 +10,8 @@ export default function List() {
   const [search, setSearch] = useState('');
   const [filteredArt, setFilteredArt] = useState([]);
 
-  // const isSearching = !!search.length;
-  // const noResults = isSearching && !filteredArt.length;
+  const isSearching = !!search.length;
+  const noResults = isSearching && !filteredArt.length;
 
   // const list = isSearching ? filteredArt : artList;
 
@@ -27,7 +27,13 @@ export default function List() {
   // useEffect
   useEffect(() => {
     async function getAndSetArt() {
-      const resp = await fetch('https://api.artic.edu/api/v1/artworks');
+      // const resp = await fetch(
+      //   'https://api.artic.edu/api/v1/artworks?fields=id,title,artist_title,image_id,?page=5&limit=20'
+      // );
+      const resp = await fetch(
+        `https://api.artic.edu/api/v1/artworks/search?fields=id,title,artist_title,artist_id,image_id&limit=20`
+      );
+      // const resp = await fetch('https://api.artic.edu/api/v1/artworks');
       const data = await resp.json();
       // console.log('data', data.results);
       setArtList(data.data);
@@ -52,8 +58,8 @@ export default function List() {
         <p>Loading...</p>
       ) : (
         <div className={styles.list}>
-          {(isSearching ? filteredArt : artList).map((art) => (
-            <Item key={art.title} art={art} />
+          {(isSearching ? filteredArt : artList).map((art, i) => (
+            <Item key={art.title + i} art={art} />
           ))}
         </div>
       )}
