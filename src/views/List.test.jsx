@@ -38,10 +38,6 @@ const data = {
 };
 
 const server = setupServer(
-  // rest.get(
-  //   'https://api.artic.edu/api/v1/artworks/search?fields=id,title,artist_title,image_id&limit=20',
-  //   (req, res, ctx) => res(ctx.json(data1))
-  // )
   rest.get('https://api.artic.edu/api/v1/artworks/search', (req, res, ctx) =>
     res(ctx.json(data))
   )
@@ -65,6 +61,7 @@ describe('Component and Behavioral Tests', () => {
     await screen.findByText('Starry Night and the Astronauts');
     // screen.debug();
 
+    // BEHAVIORAL TESTS
     // find the filter input box
     const search = screen.getByPlaceholderText('Find a piece of art');
 
