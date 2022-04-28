@@ -8,13 +8,9 @@ import { MemoryRouter } from 'react-router-dom';
 import userEvent from '@testing-library/user-event';
 import List from './List';
 
-
 describe('Component and Behavioral Tests', () => {
-
-  it('Should test the Component and Behavior', async () => {
+  it('Should test the Components', async () => {
     render(<List />);
-
-    // screen.debug();
 
     // COMPONENT TESTS
     // see if there is an element with text of "loading"
@@ -23,6 +19,13 @@ describe('Component and Behavioral Tests', () => {
     // wait and see if an element with the text of "starry night" appears
     await screen.findByText('Starry Night and the Astronauts');
     // screen.debug();
+  });
+
+  it('Should test the Behavior', async () => {
+    render(<List />);
+
+    // wait for loading message to be removed
+    await waitForElementToBeRemoved(screen.getByText(/loading/i));
 
     // BEHAVIORAL TESTS
     // find the filter input box

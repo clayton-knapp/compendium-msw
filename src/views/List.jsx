@@ -13,8 +13,6 @@ export default function List() {
   const isSearching = !!search.length;
   const noResults = isSearching && !filteredArt.length;
 
-  // const list = isSearching ? filteredArt : artList;
-
   function handleSearch(e) {
     setSearch(e.target.value);
     const results = artList.filter((art) =>
