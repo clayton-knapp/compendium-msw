@@ -10,7 +10,7 @@ body,
 } */
 
 .list {
-  width: 700px;
+  width: 900px;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -30,5 +30,5 @@ body,
 }
 
 .item img {
-  width: 200px;
+  width: 175px;
 }

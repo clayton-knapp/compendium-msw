@@ -6,7 +6,7 @@ export default function Item({ art }) {
 
   return (
     <div className={styles['item']}>
-      <h2 aria-label="name">{art.title}</h2>
+      <h2 aria-label="title">{art.title}</h2>
       <p>{art.artist_title}</p>
       <img
         src={`https://www.artic.edu/iiif/2/${art.image_id}/full/843,/0/default.jpg`}

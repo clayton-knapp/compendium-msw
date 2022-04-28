@@ -21,19 +21,15 @@ export default function List() {
       art.title.toLowerCase().startsWith(e.target.value.toLowerCase().trim())
     );
     setFilteredArt(results);
-    console.log('filteredArt', filteredArt);
+    // console.log('filteredArt', filteredArt);
   }
 
   // useEffect
   useEffect(() => {
     async function getAndSetArt() {
-      // const resp = await fetch(
-      //   'https://api.artic.edu/api/v1/artworks?fields=id,title,artist_title,image_id,?page=5&limit=20'
-      // );
       const resp = await fetch(
-        `https://api.artic.edu/api/v1/artworks/search?fields=id,title,artist_title,artist_id,image_id&limit=20`
+        `https://api.artic.edu/api/v1/artworks/search?fields=id,title,artist_title,image_id&limit=20`
       );
-      // const resp = await fetch('https://api.artic.edu/api/v1/artworks');
       const data = await resp.json();
       // console.log('data', data.results);
       setArtList(data.data);
@@ -42,7 +38,7 @@ export default function List() {
     getAndSetArt();
   }, []);
 
-  console.log('artList', artList);
+  // console.log('artList', artList);
 
   return (
     <>
